@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="/index.css" rel="stylesheet" type="text/css" />
+    <link href="/index.grid.css" rel="stylesheet" type="text/css" />
+    <script src="/modal/signup-modal.js" type="module"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <header>회비관리 메신저 서비스</header>
+    <div class="buttonContainer">
+        <div class="flexContainer">
+            <button class="buttonItem" id="signup-button"> 회원가입 </button>
+            <button class="buttonItem" id="login"> 로그인 </button>
+            <button class="buttonItem" id="logout"> 로그아웃 </button>
+        </div>
+    </div>
+    <div class="logContainer">
+        <p class="logRed">### 로그 컨테이너 입니다.</p>
+        <p class="logBlue">@@@ 로그 컨테이너 입니다.</p>
+        <p>로그 컨테이너 입니다.</p>
+    </div>
+    <div class="modalContainer">
+        <signup-modal />
+    </div>
+
+    <footer>Footer</footer>
+</body>
+
+</html>

@@ -1,0 +1,78 @@
+header {
+    font-size: 1.5rem;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    color: white;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    color: white;
+}
+
+p {
+    color: white;
+    margin: 0 0 2px 0;
+    white-space: pre-wrap;
+}
+
+.buttonContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow-y: auto;
+}
+
+.logContainer {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(22, 20, 20);
+    overflow-y: auto;
+    padding: 20px;
+}
+
+.flexContainer {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.buttonItem {
+    padding: 10px;
+    margin: 5px;
+}
+
+.logRed {
+    color: red;
+    margin: 0 0 2px 0;
+}
+.logBlue {
+    color: rgb(87, 87, 255);
+    margin: 0 0 2px 0;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    background-color: white;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%;
+    text-align: center;
+}
