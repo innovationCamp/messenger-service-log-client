@@ -3,6 +3,10 @@ import { appendListFlush, CreatePElement } from "/common-function.js";
 
 class SignUpModal extends HTMLElement {
     connectedCallback() {
+        //이미 생성돼 있어야하는 DOM
+        const logContainer = document.querySelector('.logContainer');
+        const signUp = document.querySelector("#signup-button");
+
         this.innerHTML = `
         <div id="signup-modal" class="modal">
             <div class="modal-content">
@@ -19,12 +23,10 @@ class SignUpModal extends HTMLElement {
                 <button id="signup-modal-close">닫기</button>
             </div>
         </div>
-        `;
-        const signUp = document.getElementById("signup-button")
-        const modal = document.getElementById("signup-modal");
-        const formElem = document.getElementById("signup-form");
-        const closeModalButton = document.getElementById("signup-modal-close");
-        const logContainer = document.querySelector('.logContainer');
+        `;        
+        const modal = document.querySelector("#signup-modal");
+        const formElem = document.querySelector("#signup-form");
+        const closeModalButton = document.querySelector("#signup-modal-close");
 
         //모달 띄우기
         signUp.addEventListener("click", async () => {
