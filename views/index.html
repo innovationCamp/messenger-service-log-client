@@ -14,10 +14,13 @@
 <body>
     <header>회비관리 메신저 서비스</header>
     <div class="buttonContainer">
-        <div class="flexContainer">
+        <div class="flexContainer" id="user">
             <button class="buttonItem" id="signup-button"> 회원가입 </button>
-            <button class="buttonItem" id="login"> 로그인 </button>
+            <button class="buttonItem" id="login-button"> 로그인 </button>
             <button class="buttonItem" id="logout"> 로그아웃 </button>
+        </div>
+        <div class="flexContainer" id="channel">
+            <button class="buttonItem" id="channel-create-button"> 채널추가 </button>
         </div>
     </div>
     <div class="logContainer">
@@ -26,10 +29,14 @@
         <p>로그 컨테이너 입니다.</p>
     </div>
     <div class="modalContainer">
-        <signup-modal />
+        <signup-modal></signup-modal>
+        <login-modal></login-modal>
+        <channel-create-modal></channel-create-modal>
     </div>
 
     <footer>Footer</footer>
 </body>
 <script src="/modal/signup-modal.js" type="module"></script>
+<script src="/modal/login-modal.js" type="module"></script>
+<script src="/modal/channel-create-modal.js" type="module"></script>
 </html>

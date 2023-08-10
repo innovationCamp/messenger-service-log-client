@@ -1,27 +1,24 @@
 import Api from "/api.js";
 import { appendListFlush, CreatePElement } from "/common-function.js";
 
-// modalName 소문자로만 작성해주세요~
-const modalName = "signup";
+// modalName 소문자 + 하이픈으로만 작성해주세요~
+const modalName = "login";
 
-class SignUpModal extends HTMLElement {
+class LoginModal extends HTMLElement {
     connectedCallback() {
-        //이미 생성돼 있어야하는 DOM
         const logContainer = document.querySelector('.logContainer');
         const button = document.querySelector(`#${modalName}-button`);
 
         this.innerHTML = `
         <div id="${modalName}-modal" class="modal">
             <div class="modal-content">
-                <h2>회원가입</h2>
+                <h2>로그인</h2>
                 <form id="${modalName}-form" onsubmit="return false;">
                     <label for="email">Email:</label>
                     <input type="email" id="email" name="email"><br><br>
-                    <label for="username">Username:</label>
-                    <input type="text" id="username" name="username"><br><br>
                     <label for="password">Password:</label>
                     <input type="password" id="password" name="password"><br><br>
-                    <button type="submit">가입하기</button>
+                    <button type="submit">로그인</button>
                 </form>
             </div>
         </div>
@@ -30,7 +27,7 @@ class SignUpModal extends HTMLElement {
         const formElem = document.querySelector(`#${modalName}-form`);
 
         //모달 띄우기
-        button.addEventListener("click", async () => {
+        button.addEventListener("click", () => {
             modal.style.display = "block";
         })
 
@@ -50,12 +47,12 @@ class SignUpModal extends HTMLElement {
             const inputData = JSON.stringify(Object.fromEntries(formdata));
 
             appendList.push(document.createElement("br"));
-            appendList.push(CreatePElement("### 회원가입 실행", "logRed"));
+            appendList.push(CreatePElement("### 로그인 실행", "logRed"));
             appendList.push(CreatePElement(inputData));
             appendList.push(CreatePElement("@@@ 결과", "logBlue"));
             appendListFlush(logContainer, appendList);
 
-            const response = await Api.signUp(formdata);
+            const response = await Api.login(formdata);
             appendList.push(CreatePElement(JSON.stringify(response)));
             appendListFlush(logContainer, appendList);
 
@@ -66,4 +63,4 @@ class SignUpModal extends HTMLElement {
     }
 }
 
-customElements.define(`${modalName}-modal`, SignUpModal);
+customElements.define(`${modalName}-modal`, LoginModal);
