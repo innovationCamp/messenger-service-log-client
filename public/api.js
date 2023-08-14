@@ -46,6 +46,7 @@ const Api = {
         })
         return response.json();
     },
+<<<<<<< Updated upstream
     channelSearch: async (queryObject) => {
         let query = Object.keys(queryObject)
             .map(k => encodeURIComponent(k) + '=' + encodeURIComponent(queryObject[k]))
@@ -63,6 +64,11 @@ const Api = {
     channelParticipant: async (channelId) => {
         let url = `${baseUrl}/channel/${channelId}/user`;
         const response = await fetch(url, {
+=======
+    channelParticipant: async (formdata) => {
+        const channelId = formdata.get("channelId")
+        const response = await fetch(`${baseUrl}/channel/${channelId}/user`, {
+>>>>>>> Stashed changes
             credentials: "include",
             method: "POST",
             headers: {
@@ -71,8 +77,26 @@ const Api = {
         })
         return response.json();
     },
+<<<<<<< Updated upstream
     channelList: async () => {
         const response = await fetch(`${baseUrl}/channel`, {
+=======
+    personalWalletCreate: async (formdata) => {
+        const response = await fetch(`${baseUrl}/wallet/user`, {
+            credentials: "include",
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                password: formdata.get("password"),
+            }),
+        })
+        return response.json();
+    },
+    personalWalletGet: async (formdata) => {
+        const response = await fetch(`${baseUrl}/wallet/user`, {
+>>>>>>> Stashed changes
             credentials: "include",
             method: "GET",
             headers: {
@@ -80,6 +104,106 @@ const Api = {
             },
         })
         return response.json();
+<<<<<<< Updated upstream
     }
+=======
+    },
+    groupWalletCreate: async (formdata) => {
+        const response = await fetch(`${baseUrl}/wallet/group`, {
+            credentials: "include",
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                channelId: formdata.get("channelId"),
+                walletName: formdata.get("walletName"),
+                description: formdata.get("description"),
+                password: formdata.get("password"),
+            }),
+        })
+        return response.json();
+    },
+    groupWalletGetAll: async (formdata) => {
+        const channelId = formdata.get("channelId")
+        const response = await fetch(`${baseUrl}/wallet/group/all/channel/${channelId}`, {
+            credentials: "include",
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        })
+        return response.json();
+    },
+    groupWalletParticipant: async (formdata) => {
+        const groupWalletId = formdata.get("groupWalletId")
+        const response = await fetch(`${baseUrl}/wallet/group/${groupWalletId}`, {
+            credentials: "include",
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        })
+        return response.json();
+    },
+    groupWalletParticipantGet: async (formdata) => {
+        const response = await fetch(`${baseUrl}/wallet/user/group/all`, {
+            credentials: "include",
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        })
+        return response.json();
+    },
+    groupWalletGet: async (formdata) => {
+        const groupWalletId = formdata.get("groupWalletId")
+        const response = await fetch(`${baseUrl}/wallet/group/${groupWalletId}`, {
+            credentials: "include",
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        })
+        return response.json();
+    },
+    transaction: async (formdata) => {
+        const response = await fetch(`${baseUrl}/wallet/transaction`, {
+            credentials: "include",
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                password: formdata.get("password"),
+                walletId: formdata.get("walletId"),
+                targetWalletId: formdata.get("targetWalletId"),
+                amount: formdata.get("amount"),
+            }),
+        })
+        return response.json();
+    },
+    transactionPersonalWalletGet: async (formdata) => {
+        const response = await fetch(`${baseUrl}/wallet/user/transaction/all`, {
+            credentials: "include",
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        })
+        return response.json();
+    },
+    transactionGroupWalletGet: async (formdata) => {
+        const groupWalletId = formdata.get("groupWalletId")
+        const response = await fetch(`${baseUrl}/wallet/group/${groupWalletId}/transaction/all`, {
+            credentials: "include",
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        })
+        return response.json();
+    },
+>>>>>>> Stashed changes
 }
 export default Api;
