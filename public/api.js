@@ -46,7 +46,6 @@ const Api = {
         })
         return response.json();
     },
-<<<<<<< Updated upstream
     channelSearch: async (queryObject) => {
         let query = Object.keys(queryObject)
             .map(k => encodeURIComponent(k) + '=' + encodeURIComponent(queryObject[k]))
@@ -61,14 +60,9 @@ const Api = {
         })
         return response.json();
     },
-    channelParticipant: async (channelId) => {
-        let url = `${baseUrl}/channel/${channelId}/user`;
-        const response = await fetch(url, {
-=======
     channelParticipant: async (formdata) => {
         const channelId = formdata.get("channelId")
         const response = await fetch(`${baseUrl}/channel/${channelId}/user`, {
->>>>>>> Stashed changes
             credentials: "include",
             method: "POST",
             headers: {
@@ -77,10 +71,6 @@ const Api = {
         })
         return response.json();
     },
-<<<<<<< Updated upstream
-    channelList: async () => {
-        const response = await fetch(`${baseUrl}/channel`, {
-=======
     personalWalletCreate: async (formdata) => {
         const response = await fetch(`${baseUrl}/wallet/user`, {
             credentials: "include",
@@ -96,7 +86,6 @@ const Api = {
     },
     personalWalletGet: async (formdata) => {
         const response = await fetch(`${baseUrl}/wallet/user`, {
->>>>>>> Stashed changes
             credentials: "include",
             method: "GET",
             headers: {
@@ -104,9 +93,6 @@ const Api = {
             },
         })
         return response.json();
-<<<<<<< Updated upstream
-    }
-=======
     },
     groupWalletCreate: async (formdata) => {
         const response = await fetch(`${baseUrl}/wallet/group`, {
@@ -204,6 +190,5 @@ const Api = {
         })
         return response.json();
     },
->>>>>>> Stashed changes
 }
 export default Api;

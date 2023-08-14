@@ -4,11 +4,7 @@ import { appendListFlush, CreatePElement } from "/common-function.js";
 // modalName 소문자 + 하이픈으로만 작성해주세요~
 const modalName = "channel-participant";
 
-<<<<<<< Updated upstream
-class ChannelCreateModal extends HTMLElement {
-=======
 class ChannelParticipantModal extends HTMLElement {
->>>>>>> Stashed changes
     connectedCallback() {
         //이미 생성돼 있어야하는 DOM
         const logContainer = document.querySelector('.logContainer');
@@ -19,16 +15,9 @@ class ChannelParticipantModal extends HTMLElement {
             <div class="modal-content">
                 <h2>채널 참여</h2>
                 <form id="${modalName}-form" onsubmit="return false;">
-<<<<<<< Updated upstream
-                    <label for="channelId">channelId:</label>
-                    <input type="channelId" id="channelId" name="channelId"><br><br>
-
-                    <button type="submit">채널 참여</button>
-=======
                     <label for="channelId">ChannelId:</label>
                     <input type="channelId" id="channelId" name="channelId"><br><br>
                     <button type="submit">참여하기</button>
->>>>>>> Stashed changes
                 </form>
             </div>
         </div>
@@ -62,27 +51,15 @@ class ChannelParticipantModal extends HTMLElement {
             appendList.push(CreatePElement("@@@ 결과", "logBlue"));
             appendListFlush(logContainer, appendList);
 
-<<<<<<< Updated upstream
-            const response = await Api.channelParticipant(formdata.get("channelId"));
-            appendList.push(CreatePElement(JSON.stringify(response)));
-            appendListFlush(logContainer, appendList);
-
-            // //스크롤 하단으로 고정
-=======
             const response = await Api.channelParticipant(formdata);
             appendList.push(CreatePElement(JSON.stringify(response)));
             appendListFlush(logContainer, appendList);
 
             //스크롤 하단으로 고정
->>>>>>> Stashed changes
             logContainer.scrollTop = logContainer.scrollHeight;
         }
 
     }
 }
 
-<<<<<<< Updated upstream
-customElements.define(`${modalName}-modal`, ChannelCreateModal);
-=======
 customElements.define(`${modalName}-modal`, ChannelParticipantModal);
->>>>>>> Stashed changes
