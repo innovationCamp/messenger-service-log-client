@@ -1,14 +1,10 @@
 import Api from "/api.js";
 import { appendListFlush, CreatePElement } from "/common-function.js";
 
-// modalName 소문자 + 하이픈으로만 작성해주세요~
-const modalName = "channel-participant";
+// modalName 소문자로만 작성해주세요~
+const modalName = "transaction";
 
-<<<<<<< Updated upstream
-class ChannelCreateModal extends HTMLElement {
-=======
-class ChannelParticipantModal extends HTMLElement {
->>>>>>> Stashed changes
+class TransactionModal extends HTMLElement {
     connectedCallback() {
         //이미 생성돼 있어야하는 DOM
         const logContainer = document.querySelector('.logContainer');
@@ -17,18 +13,17 @@ class ChannelParticipantModal extends HTMLElement {
         this.innerHTML = `
         <div id="${modalName}-modal" class="modal">
             <div class="modal-content">
-                <h2>채널 참여</h2>
+                <h2>송금</h2>
                 <form id="${modalName}-form" onsubmit="return false;">
-<<<<<<< Updated upstream
-                    <label for="channelId">channelId:</label>
-                    <input type="channelId" id="channelId" name="channelId"><br><br>
-
-                    <button type="submit">채널 참여</button>
-=======
-                    <label for="channelId">ChannelId:</label>
-                    <input type="channelId" id="channelId" name="channelId"><br><br>
-                    <button type="submit">참여하기</button>
->>>>>>> Stashed changes
+                    <label for="walletId">WalletId:</label>
+                    <input type="walletId" id="walletId" name="walletId"><br><br>
+                    <label for="targetWalletId">targetWalletId:</label>
+                    <input type="targetWalletId" id="targetWalletId" name="targetWalletId"><br><br>
+                    <label for="amount">Amount:</label>
+                    <input type="amount" id="amount" name="amount"><br><br>
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password"><br><br>
+                    <button type="submit">송금하기</button>
                 </form>
             </div>
         </div>
@@ -57,32 +52,20 @@ class ChannelParticipantModal extends HTMLElement {
             const inputData = JSON.stringify(Object.fromEntries(formdata));
 
             appendList.push(document.createElement("br"));
-            appendList.push(CreatePElement("### 채널참여 실행", "logRed"));
+            appendList.push(CreatePElement("### 송금 실행", "logRed"));
             appendList.push(CreatePElement(inputData));
             appendList.push(CreatePElement("@@@ 결과", "logBlue"));
             appendListFlush(logContainer, appendList);
 
-<<<<<<< Updated upstream
-            const response = await Api.channelParticipant(formdata.get("channelId"));
-            appendList.push(CreatePElement(JSON.stringify(response)));
-            appendListFlush(logContainer, appendList);
-
-            // //스크롤 하단으로 고정
-=======
-            const response = await Api.channelParticipant(formdata);
+            const response = await Api.transaction(formdata);
             appendList.push(CreatePElement(JSON.stringify(response)));
             appendListFlush(logContainer, appendList);
 
             //스크롤 하단으로 고정
->>>>>>> Stashed changes
             logContainer.scrollTop = logContainer.scrollHeight;
         }
 
     }
 }
 
-<<<<<<< Updated upstream
-customElements.define(`${modalName}-modal`, ChannelCreateModal);
-=======
-customElements.define(`${modalName}-modal`, ChannelParticipantModal);
->>>>>>> Stashed changes
+customElements.define(`${modalName}-modal`, TransactionModal);

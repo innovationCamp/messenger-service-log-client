@@ -1,14 +1,10 @@
 import Api from "/api.js";
 import { appendListFlush, CreatePElement } from "/common-function.js";
 
-// modalName 소문자 + 하이픈으로만 작성해주세요~
-const modalName = "channel-participant";
+// modalName 소문자로만 작성해주세요~
+const modalName = "group-wallet-get";
 
-<<<<<<< Updated upstream
-class ChannelCreateModal extends HTMLElement {
-=======
-class ChannelParticipantModal extends HTMLElement {
->>>>>>> Stashed changes
+class GroupWalletGetModal extends HTMLElement {
     connectedCallback() {
         //이미 생성돼 있어야하는 DOM
         const logContainer = document.querySelector('.logContainer');
@@ -17,18 +13,11 @@ class ChannelParticipantModal extends HTMLElement {
         this.innerHTML = `
         <div id="${modalName}-modal" class="modal">
             <div class="modal-content">
-                <h2>채널 참여</h2>
+                <h2>그룹통장조회</h2>
                 <form id="${modalName}-form" onsubmit="return false;">
-<<<<<<< Updated upstream
-                    <label for="channelId">channelId:</label>
-                    <input type="channelId" id="channelId" name="channelId"><br><br>
-
-                    <button type="submit">채널 참여</button>
-=======
-                    <label for="channelId">ChannelId:</label>
-                    <input type="channelId" id="channelId" name="channelId"><br><br>
-                    <button type="submit">참여하기</button>
->>>>>>> Stashed changes
+                    <label for="groupWalletId">GroupWalletId:</label>
+                    <input type="groupWalletId" id="groupWalletId" name="groupWalletId"><br><br>
+                    <button type="submit">조회하기</button>
                 </form>
             </div>
         </div>
@@ -57,32 +46,20 @@ class ChannelParticipantModal extends HTMLElement {
             const inputData = JSON.stringify(Object.fromEntries(formdata));
 
             appendList.push(document.createElement("br"));
-            appendList.push(CreatePElement("### 채널참여 실행", "logRed"));
+            appendList.push(CreatePElement("### 그룹통장조회 실행", "logRed"));
             appendList.push(CreatePElement(inputData));
             appendList.push(CreatePElement("@@@ 결과", "logBlue"));
             appendListFlush(logContainer, appendList);
 
-<<<<<<< Updated upstream
-            const response = await Api.channelParticipant(formdata.get("channelId"));
-            appendList.push(CreatePElement(JSON.stringify(response)));
-            appendListFlush(logContainer, appendList);
-
-            // //스크롤 하단으로 고정
-=======
-            const response = await Api.channelParticipant(formdata);
+            const response = await Api.groupWalletGet(formdata);
             appendList.push(CreatePElement(JSON.stringify(response)));
             appendListFlush(logContainer, appendList);
 
             //스크롤 하단으로 고정
->>>>>>> Stashed changes
             logContainer.scrollTop = logContainer.scrollHeight;
         }
 
     }
 }
 
-<<<<<<< Updated upstream
-customElements.define(`${modalName}-modal`, ChannelCreateModal);
-=======
-customElements.define(`${modalName}-modal`, ChannelParticipantModal);
->>>>>>> Stashed changes
+customElements.define(`${modalName}-modal`, GroupWalletGetModal);
