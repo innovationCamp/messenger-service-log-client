@@ -46,6 +46,16 @@ const Api = {
         })
         return response.json();
     },
+    channelList: async () => {
+        const response = await fetch(`${baseUrl}/channel`, {
+            credentials: "include",
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        })
+        return response.json();
+    },
     channelSearch: async (queryObject) => {
         let query = Object.keys(queryObject)
             .map(k => encodeURIComponent(k) + '=' + encodeURIComponent(queryObject[k]))
