@@ -72,7 +72,7 @@ const Api = {
     },
     channelParticipant: async (formdata) => {
         const channelId = formdata.get("channelId")
-        const response = await fetch(`${baseUrl}/channel/${channelId}/user`, {
+        const response = await fetch(`${baseUrl}/channel/${channelId}/signup`, {
             credentials: "include",
             method: "POST",
             headers: {
@@ -192,6 +192,47 @@ const Api = {
     transactionGroupWalletGet: async (formdata) => {
         const groupWalletId = formdata.get("groupWalletId")
         const response = await fetch(`${baseUrl}/wallet/group/${groupWalletId}/transaction/all`, {
+            credentials: "include",
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        })
+        return response.json();
+    },
+    reservation: async (formdata) => {
+        const response = await fetch(`${baseUrl}/wallet/reservation`, {
+            credentials: "include",
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                walletId: formdata.get("walletId"),
+                targetWalletId: formdata.get("targetWalletId"),
+                amount: formdata.get("amount"),
+                year: formdata.get("year"),
+                month: formdata.get("months"),
+                day: formdata.get("day"),
+                type: formdata.get("type"),
+                password: formdata.get("password"),
+            }),
+        })
+        return response.json();
+    },
+    reservationPersonalWalletGet: async (formdata) => {
+        const response = await fetch(`${baseUrl}/wallet/user/reservation`, {
+            credentials: "include",
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        })
+        return response.json();
+    },
+    reservationGroupWalletGet: async (formdata) => {
+        const groupWalletId = formdata.get("groupWalletId")
+        const response = await fetch(`${baseUrl}/wallet/group/${groupWalletId}/reservation`, {
             credentials: "include",
             method: "GET",
             headers: {

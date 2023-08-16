@@ -22,12 +22,18 @@
         <div class="flexContainer" id="channel">
             <button class="buttonItem" id="channel-create-button"> 채널추가 </button>
             <button class="buttonItem" id="channel-search-button"> 채널검색 </button>
+            <button class="buttonItem" id="channel-see-button"> 채널입장 </button>
             <button class="buttonItem" id="channel-participant-button"> 채널참여 </button>
             <button class="buttonItem" id="channel-list-button"> 참여중 채널 조회 </button>
+        </div>
+        <div class="flexContainer" id="channel-content">
+            <button class="buttonItem"> 채팅 </button>
         </div>
         <div class="flexContainer" id="personalWallet">
             <button class="buttonItem" id="personal-wallet-create-button"> 개인통장개설 </button>
             <button class="buttonItem" id="personal-wallet-get-button"> 개인통장조회 </button>
+            <button class="buttonItem" id="transaction-personal-wallet-get-button"> 개인통장거래내역조회 </button>
+            <button class="buttonItem" id="reservation-personal-wallet-get-button"> 개인통장예약조회 </button>
         </div>
         <div class="flexContainer" id="groupWallet">
             <button class="buttonItem" id="group-wallet-create-button"> 그룹통장개설 </button>
@@ -35,11 +41,12 @@
             <button class="buttonItem" id="group-wallet-participant-button"> 그룹통장가입 </button>
             <button class="buttonItem" id="group-wallet-participant-get-button"> 가입한그룹통장조회 </button>
             <button class="buttonItem" id="group-wallet-get-button"> 그룹통장조회 </button>
+            <button class="buttonItem" id="transaction-group-wallet-get-button"> 그룹통장거래내역조회 </button>
+            <button class="buttonItem" id="reservation-group-wallet-get-button"> 그룹통장예약조회 </button>
         </div>
         <div class="flexContainer" id="transaction">
             <button class="buttonItem" id="transaction-button"> 송금 </button>
-            <button class="buttonItem" id="transaction-personal-wallet-get-button"> 개인통장거래내역조회 </button>
-            <button class="buttonItem" id="transaction-group-wallet-get-button"> 그룹통장거래내역조회 </button>
+            <button class="buttonItem" id="reservation-button"> 예약 </button>
         </div>
     </div>
     <div class="logContainer">
@@ -64,6 +71,9 @@
         <transaction-modal></transaction-modal>
         <transaction-personal-wallet-get-modal></transaction-personal-wallet-get-modal>
         <transaction-group-wallet-get-modal></transaction-group-wallet-get-modal>
+        <reservation-modal></reservation-modal>
+        <reservation-personal-wallet-get-modal></reservation-personal-wallet-get-modal>
+        <reservation-group-wallet-get-modal></reservation-group-wallet-get-modal>
     </div>
 
     <footer>Footer</footer>
@@ -84,4 +94,7 @@
 <script src="/modal/transaction-modal.js" type="module"></script>
 <script src="/modal/transaction-personal-wallet-get-modal.js" type="module"></script>
 <script src="/modal/transaction-group-wallet-get-modal.js" type="module"></script>
+<script src="/modal/reservation-modal.js" type="module"></script>
+<script src="/modal/reservation-personal-wallet-get-modal.js" type="module"></script>
+<script src="/modal/reservation-group-wallet-get-modal.js" type="module"></script>
 </html>

@@ -55,7 +55,7 @@ class ChannelParticipantModal extends HTMLElement {
             appendList.push(CreatePElement(JSON.stringify(response)));
             appendListFlush(logContainer, appendList);
 
-            //스크롤 하단으로 고정
+            // //스크롤 하단으로 고정
             logContainer.scrollTop = logContainer.scrollHeight;
         }
 
