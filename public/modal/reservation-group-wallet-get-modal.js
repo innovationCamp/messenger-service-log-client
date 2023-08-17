@@ -2,9 +2,9 @@ import Api from "/api.js";
 import { appendListFlush, CreatePElement } from "/common-function.js";
 
 // modalName 소문자로만 작성해주세요~
-const modalName = "personal-wallet-create";
+const modalName = "reservation-group-wallet-get";
 
-class PersonalWalletCreateModal extends HTMLElement {
+class ReservationGroupWalletGetModal extends HTMLElement {
     connectedCallback() {
         //이미 생성돼 있어야하는 DOM
         const logContainer = document.querySelector('.logContainer');
@@ -13,11 +13,11 @@ class PersonalWalletCreateModal extends HTMLElement {
         this.innerHTML = `
         <div id="${modalName}-modal" class="modal">
             <div class="modal-content">
-                <h2>개인통장개설</h2>
+                <h2>그룹통장예약내역조회</h2>
                 <form id="${modalName}-form" onsubmit="return false;">
-                    <label for="password">Password:</label>
-                    <input type="password" id="password" name="password"><br><br>
-                    <button type="submit">개설하기</button>
+                    <label for="groupWalletId">GroupWalletId:</label>
+                    <input type="groupWalletId" id="groupWalletId" name="groupWalletId"><br><br>
+                    <button type="submit">조회하기</button>
                 </form>
             </div>
         </div>
@@ -46,12 +46,12 @@ class PersonalWalletCreateModal extends HTMLElement {
             const inputData = JSON.stringify(Object.fromEntries(formdata));
 
             appendList.push(document.createElement("br"));
-            appendList.push(CreatePElement("### 개인통장개설 실행", "logRed"));
+            appendList.push(CreatePElement("### 그룹통장 예약 내역 조회 실행", "logRed"));
             appendList.push(CreatePElement(inputData));
             appendList.push(CreatePElement("@@@ 결과", "logBlue"));
             appendListFlush(logContainer, appendList);
 
-            const response = await Api.personalWalletCreate(formdata);
+            const response = await Api.reservationGroupWalletGet(formdata);
             appendList.push(CreatePElement(JSON.stringify(response)));
             appendListFlush(logContainer, appendList);
 
@@ -62,4 +62,4 @@ class PersonalWalletCreateModal extends HTMLElement {
     }
 }
 
-customElements.define(`${modalName}-modal`, PersonalWalletCreateModal);
+customElements.define(`${modalName}-modal`, ReservationGroupWalletGetModal);
