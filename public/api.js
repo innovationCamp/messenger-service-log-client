@@ -241,5 +241,18 @@ const Api = {
         })
         return response.json();
     },
+    personalWalletCreateMoney: async (formdata) => {
+        const response = await fetch(`${baseUrl}/wallet/user/money`, {
+            credentials: "include",
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                amount: formdata.get("amount"),
+            }),
+        })
+        return response.json();
+    },
 }
 export default Api;
